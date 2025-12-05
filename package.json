@@ -1,6 +1,6 @@
 {
   "name": "@endikau/nd_assets",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Static assets (CSS, JS, fonts, vendor bundles) for EnDiKaU sites.",
   "main": "index.js",
   "files": [
