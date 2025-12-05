@@ -14,9 +14,7 @@ path_css <- local({
 })
 
 sass::sass(
-  input=sass::sass_file(
-    fs::path(path_assets_dir, "scss", "nd_site.scss")
-  ),
+  input=sass::sass_file(fs::path(path_assets_dir, "scss", "nd_site.scss")),
   output=fs::path(path_css, "nd_site.css"),
   cache=NULL
 )
