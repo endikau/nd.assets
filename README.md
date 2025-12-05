@@ -1,6 +1,6 @@
-# ND Assets (GitHub Packages)
+# nd.assets
 
-Static front-end assets for ND sites bundled as an npm package (via GitHub Packages). The package ships everything under `dist/` (CSS, JS helpers, SCSS sources, vendored dependencies, fonts, and images).
+Static front-end assets for EnDiKaU sites bundled as an npm package (via GitHub Packages). The package ships everything under `dist/` (CSS, JS helpers, SCSS sources, vendored dependencies, fonts, and images).
 
 ## Install from GitHub Packages
 - Add to your `~/.npmrc` (or project-local `.npmrc`):
