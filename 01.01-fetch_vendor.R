@@ -327,7 +327,15 @@ local({
     fs::path(.path_lib_tmp, "css", "glide.core.css")
   )
   fs::file_copy(
+    fs::path(.path_git_tmp, "dist", "css", "glide.core.css.map"),
+    fs::path(.path_lib_tmp, "css", "glide.core.css.map")
+  )
+  fs::file_copy(
     fs::path(.path_git_tmp, "dist", "css", "glide.theme.css"),
     fs::path(.path_lib_tmp, "css", "glide.theme.css")
+  )
+  fs::file_copy(
+    fs::path(.path_git_tmp, "dist", "css", "glide.theme.css.map"),
+    fs::path(.path_lib_tmp, "css", "glide.theme.css.map")
   )
 })

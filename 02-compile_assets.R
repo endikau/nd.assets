@@ -22,12 +22,3 @@ sass::sass(
   output=fs::path(path_css, "nd_site.css"),
   cache=NULL
 )
-
-if(fs::file_exists(path_assets_zip)){fs::file_delete(path_assets_zip)}
-zip::zip(
-  zipfile=path_assets_zip, 
-  files=fs::dir_ls(path_assets_dir), 
-  mode="cherry-pick"
-)
-
-if(interactive()){devtools::install(); devtools::reload()}
