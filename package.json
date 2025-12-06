@@ -1,0 +1,32 @@
+{
+  "name": "@endikau/nd_assets",
+  "version": "0.0.1",
+  "description": "Static assets (CSS, JS, fonts, vendor bundles) for EnDiKaU sites.",
+  "main": "index.js",
+  "files": [
+    "dist/**/*",
+    "index.js",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "echo \"Static package: build handled outside npm (see README).\"",
+    "test": "echo \"No tests configured\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/endikau/nd.assets.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "keywords": [
+    "assets",
+    "css",
+    "js",
+    "fonts",
+    "bootstrap",
+    "vendor"
+  ],
+  "author": "m-pilarski",
+  "license": "UNLICENSED"
+}

@@ -1,7 +1,7 @@
 path_fonts <- local({
   .path_here <- here::here()
   stopifnot(stringi::stri_detect_regex(.path_here, "/nd\\.assets/?"))
-  .path_fonts <- fs::path(.path_here, "assets", "fonts")
+  .path_fonts <- fs::path(.path_here, "dist", "fonts")
   if(fs::dir_exists(.path_fonts)){fs::dir_delete(.path_fonts)}
   fs::dir_create(.path_fonts)
   return(.path_fonts)
