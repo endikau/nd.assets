@@ -1,18 +1,16 @@
-function adjustNavbarSpacer() {
-  var navbarContainer = document.querySelector('#page-navbar');
+function adjustNavbarPadding() {
+  var navbarContainer = document.querySelector('#page-navbar-container');
   if (!!navbarContainer) {
-    var navbarSpacer = document.querySelector('#page-navbar-spacer');
-    if (!!navbarSpacer) {
-    	navbarSpacer.style.height = navbarContainer.scrollHeight + 'px';
-    }
+  	document.body.style["padding-top"] = navbarContainer.scrollHeight + 'px';
   }
 }
 
-window.addEventListener('load', adjustNavbarSpacer);
-window.addEventListener('resize', adjustNavbarSpacer);
+adjustNavbarPadding();
+window.addEventListener('load', adjustNavbarPadding);
+window.addEventListener('resize', adjustNavbarPadding);
 
 /*
 const navbarToggle = document.querySelector('#navbarSupportedContent') 
-navbarToggle.addEventListener('shown.bs.collapse', adjustNavbarSpacer) 
-navbarToggle.addEventListener('hidden.bs.collapse', adjustNavbarSpacer) 
+navbarToggle.addEventListener('shown.bs.collapse', adjustNavbarPadding) 
+navbarToggle.addEventListener('hidden.bs.collapse', adjustNavbarPadding) 
 */

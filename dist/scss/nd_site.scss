@@ -1,9 +1,11 @@
 $enable-grid-classes: false;
 $enable-cssgrid: true;
 
-$font-family-base: "Open Sans", "Segoe UI", Roboto, "IBM Plex Sans", "Noto Sans", sans-serif;
+$font-family-base: "Open Sans", "Segoe UI", "Roboto", "IBM Plex Sans", "Noto Sans", sans-serif;
 $font-size-base: 1rem;
 
+$nd-navbar-bg: #2e2933;
+$nd-navbar-color: #e9ebe5;
 $body-bg: #fefffc;
 
 $primary: #837591;
@@ -15,17 +17,22 @@ $error: #e88471;
 @import "../vendor/bootstrap/scss/variables";
 @import "../vendor/bootstrap/scss/mixins";
 
-/* 
-$theme-colors: map-merge($theme-colors, (
-  "primary": $primary
-));
-*/
-
 @import "../vendor/bootstrap/scss/bootstrap";
 
+@import "general";
 @import "variables";
+@import "navbar";
 @import "text";
 @import "toc";
-@import "navbar";
 @import "io";
 @import "cards";
+@import "lists";
+// @import "glider";
+@import "glide";
+
+.anchor-link {
+  color: #bababa;
+  &:hover {
+    color: var(--bs-primary);
+  }
+}

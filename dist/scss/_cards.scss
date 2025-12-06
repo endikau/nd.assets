@@ -5,3 +5,21 @@
 .card {
 	--bs-card-border-color: #cdcfca !important;
 }
+
+.nd-card-image {
+	display: block;
+	max-width:500px;
+	max-height:500px;
+	width: auto;
+	height: auto;
+}
+
+@media (hover: hover) {
+	.nd-card:hover {
+		--bs-card-border-color: rgba(var(--bs-primary-rgb), 0.5) !important;
+		outline: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+		outline-color: rgba(var(--bs-primary-rgb), 0.5) !important;
+		outline-width: 4px !important;
+	}
+}
+	

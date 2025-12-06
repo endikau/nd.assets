@@ -2,12 +2,10 @@
 
   @include media-breakpoint-up(xl) {
     position: sticky;
-    // top: 0;
     top: 6rem;
     right: 0;
     z-index: 2;
     height: 100vh;
-    // overflow-x: hidden;
     overflow-x: hidden;
     overflow-y: hidden;
     margin-bottom: 1rem;

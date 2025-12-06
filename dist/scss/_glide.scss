@@ -1,0 +1,129 @@
+.nd-glide {
+  .glide__controls {
+    .glide__arrow {
+      position: relative;
+    }
+  }
+}
+
+.glide__controls {
+  background-color:rgb(241, 241, 241);
+  .glide__btn-left {
+    border-radius: var(--bs-card-border-radius) 0 0 var(--bs-card-border-radius);
+  }
+  .glide__btn-right {
+    border-width: 0;
+    border-radius: 0 var(--bs-card-border-radius) var(--bs-card-border-radius) 0;
+  }
+}
+
+// Glide Container
+// .glide {
+//   position: relative;
+//   width: 100%;
+//   box-sizing: border-box;
+// }
+
+// // Glide Track
+// .glide__track {
+//   overflow: hidden;
+// }
+
+// Glide Slides Container
+// .glide__slides {
+//   position: relative;
+//   width: 100%;
+//   list-style: none;
+//   backface-visibility: hidden;
+//   transform-style: preserve-3d;
+//   touch-action: pan-Y;
+//   overflow: hidden;
+//   margin: 0;
+//   padding: 0;
+//   white-space: nowrap;
+// }
+
+// Individual slides
+// .glide__slide {
+//   position: relative;
+//   display: inline-block;
+//   vertical-align: top;
+//   white-space: normal;
+//   user-select: none;
+//   -webkit-touch-callout: none;
+//   -webkit-tap-highlight-color: transparent;
+// }
+
+// Card styling and hover effects
+// .card {
+//   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+//   &:hover {
+//     transform: translateY(-2px);
+//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+//   }
+// }
+
+// // Navigation controls (underneath the glide)
+// .glide__controls {
+//   display: flex;
+//   justify-content: center;
+//   gap: 1rem;
+//   margin-top: 1rem;
+//   -webkit-touch-callout: none;
+//   user-select: none;
+// }
+
+// .glide__arrow {
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   color: #666;
+//   cursor: pointer;
+//   border: 2px solid #e0e0e0;
+//   border-radius: 50%;
+//   width: 2.5rem;
+//   height: 2.5rem;
+//   background: rgba(255, 255, 255, 0.95);
+//   font-size: 1.2rem;
+//   line-height: 1;
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+//   transition: all 0.2s ease;
+
+//   &:hover {
+//     background: rgba(248, 249, 250, 0.98);
+//     border-color: #ccc;
+//     color: #333;
+//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+//   }
+
+//   &:focus {
+//     outline: none;
+//   }
+
+//   &[disabled] {
+//     opacity: 0.33;
+//     cursor: not-allowed;
+    
+//     &:hover {
+//       background: rgba(255, 255, 255, 0.95);
+//       border-color: #e0e0e0;
+//       color: #666;
+//       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+//     }
+//   }
+// }
+
+// // Responsive adjustments
+// @media (max-width: 768px) {
+//   .glide__controls {
+//     margin-top: 0.75rem;
+//     gap: 0.75rem;
+//   }
+
+//   .glide__arrow {
+//     width: 2rem;
+//     height: 2rem;
+//     font-size: 1rem;
+//   }
+// }

@@ -6,52 +6,110 @@
   background-color: var(--bs-body-color);
 }
 
-@for $i from 1 through 6 { 
-  h#{$i} { 
+@for $i from 1 through 6 {
+  h#{$i} {
     font-weight: 700;
     font-family: "Source Serif 4";
     color: var(--nd-navbar-bg);
   }
 }
 
-.content-sec{
-  
-  margin-bottom: 1rem;
-  p {
-    padding: 0;
-    margin-top: 0;
-    margin-left: 0 ;
-    margin-right: 0.5em ;
-    margin-bottom: 0;
-    text-align: justify;
-    &:not(:first-of-type) {
-      text-indent: 1.5em;
-    }
-  }
+// .content-sec{
+
+//   margin-bottom: 1rem;
+//   p {
+//     padding: 0;
+//     margin-top: 0;
+//     margin-left: 0 ;
+//     margin-right: 0.5em ;
+//     margin-bottom: 0;
+//     text-align: justify;
+//     &:not(:first-of-type) {
+//       text-indent: 1.5em;
+//     }
+//   }
+//   word-break:break-word;
+//   -webkit-hyphens: auto;
+//   -moz-hyphens: auto;
+//   -ms-hyphens: auto;
+//   -o-hyphens: auto;
+//   hyphens: auto;
+
+//   // MOVE
+//   @for $i from 1 through 6 { h#{$i} {
+//     color: var(--endikau-blue);
+//   } }
+
+
+// }
+
+.hyphenated {
   word-break:break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -o-hyphens: auto;
   hyphens: auto;
-  
-  // MOVE
-  @for $i from 1 through 6 { h#{$i} { 
-    color: var(--endikau-blue); 
-  } }
-
-  
 }
 
-// .en-intro { p { font-style: italic; } }
+
+code {
+  font-size: 1em;
+}
+
+// a {
+//   hyphens: none;
+//   overflow-wrap: break-word;
+//   word-break: break-word;
+// }
+
+// a {
+//   // display: inline-block;         /* Ensures wrapping behavior */
+//   hyphens: none;
+//   overflow-wrap: break-word;
+//   word-break: break-word;
+//   white-space: normal;           /* Allow wrapping */
+// }
+
+.nd-article {
+
+  p {
+    padding: 0;
+    margin: 0;
+    text-align: justify;
+    text-justify: auto;
+    &:not(:empty) + p {
+      text-indent: 1.5em;
+    }
+  }
+
+  @extend .hyphenated;
+
+  // MOVE
+  @for $i from 1 through 6 { h#{$i} {
+    color: var(--endikau-blue);
+  } }
+
+  p:not(:has(+ p, + ul, )) {
+    padding-bottom: 1.5rem;
+  }
+
+}
+
+.dropcap{
+  font-size: 300%;
+  padding: 0px 0px;
+  margin-top: 0;
+  margin-right: 6px;
+  float: left;
+}
+
 
 .bubble {
   display: inline-block;
-  // line-height: 1;
   white-space: nowrap;
   text-align: center;
   vertical-align: baseline;
-  float: left;
   padding: 0 0.5rem;
   border-radius: 0;
   &:empty { display: none; }

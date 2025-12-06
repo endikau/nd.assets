@@ -1,7 +1,9 @@
 $nd-gutter-x: 3rem;
 
-$nd-navbar-color: #e9ebe5;
-$nd-navbar-bg: #2e2933;
+// $nd-navbar-color: #e9ebe5;
+// $nd-navbar-bg: #2e2933;
+
+$nd-callout-variants: info, warning, danger !default;
 
 :root {
 	--nd-navbar-color: #{$nd-navbar-color};
