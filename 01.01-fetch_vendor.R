@@ -62,16 +62,17 @@ local({
     ref = "7407fa31c51be5ab45626b8ab5554d50cc8073f6",
     repo = I(.path_git_tmp)
   )
-  processx::run("npm", c("prune"), wd = .path_git_tmp)
-  processx::run("npm", c("run", "build"), wd = .path_git_tmp)
+  # processx::run("npm", c("prune"), wd = .path_git_tmp)
+  # processx::run("npm", "install", wd = .path_git_tmp)
+  # processx::run("npm", c("run", "build"), wd = .path_git_tmp)
   fs::dir_create(fs::path(.path_lib_tmp, c("js")))
   fs::file_copy(
     fs::path(.path_git_tmp, "LICENSE"),
     fs::path(.path_lib_tmp, "LICENSE")
   )
   fs::file_copy(
-    fs::path(.path_git_tmp, "dist", "twemoji.min.js"),
-    fs::path(.path_lib_tmp, "js", "twemoji.min.js")
+    fs::path(.path_git_tmp, "dist", "twemoji.js"),
+    fs::path(.path_lib_tmp, "js", "twemoji.js")
   )
   fs::dir_copy(
     fs::path(.path_git_tmp, "dist", "svg"),
@@ -89,6 +90,7 @@ local({
     repo = I(.path_git_tmp)
   )
   processx::run("npm", "prune", wd = .path_git_tmp)
+  processx::run("npm", "install", wd = .path_git_tmp)
   processx::run("npm", c("run", "build"), wd = .path_git_tmp)
   fs::dir_create(fs::path(.path_lib_tmp, "js"))
   fs::file_copy(
@@ -268,57 +270,6 @@ local({
 
 local({
   .path_git_tmp <- fs::file_temp(pattern = "git")
-  .path_lib_tmp <- fs::path(path_vendor, "glider")
-  gert::git_clone("git@github.com:NickPiscitelli/Glider.js.git", .path_git_tmp)
-  # 0.11.0 release
-  gert::git_reset_hard(
-    ref = "1358051cce3b9ae63c55aecb97d97c4fd56796f1",
-    repo = I(.path_git_tmp)
-  )
-  fs::dir_create(fs::path(.path_lib_tmp, "js"))
-  fs::dir_create(fs::path(.path_lib_tmp, "css"))
-  fs::file_copy(
-    fs::path(.path_git_tmp, "LICENSE.txt"),
-    fs::path(.path_lib_tmp, "LICENSE")
-  )
-  fs::file_copy(
-    fs::path(.path_git_tmp, "glider.js"),
-    fs::path(.path_lib_tmp, "js", "glider.js")
-  )
-  fs::file_copy(
-    fs::path(.path_git_tmp, "glider.css"),
-    fs::path(.path_lib_tmp, "css", "glider.css")
-  )
-})
-
-
-local({
-  .path_git_tmp <- fs::file_temp(pattern = "git")
-  .path_lib_tmp <- fs::path(path_vendor, "glider")
-  gert::git_clone("git@github.com:NickPiscitelli/Glider.js.git", .path_git_tmp)
-  # 0.11.0 release
-  gert::git_reset_hard(
-    ref = "1358051cce3b9ae63c55aecb97d97c4fd56796f1",
-    repo = I(.path_git_tmp)
-  )
-  fs::dir_create(fs::path(.path_lib_tmp, "js"))
-  fs::dir_create(fs::path(.path_lib_tmp, "css"))
-  fs::file_copy(
-    fs::path(.path_git_tmp, "LICENSE.txt"),
-    fs::path(.path_lib_tmp, "LICENSE")
-  )
-  fs::file_copy(
-    fs::path(.path_git_tmp, "glider.js"),
-    fs::path(.path_lib_tmp, "js", "glider.js")
-  )
-  fs::file_copy(
-    fs::path(.path_git_tmp, "glider.css"),
-    fs::path(.path_lib_tmp, "css", "glider.css")
-  )
-})
-
-local({
-  .path_git_tmp <- fs::file_temp(pattern = "git")
   .path_lib_tmp <- fs::path(path_vendor, "glide")
   gert::git_clone("git@github.com:glidejs/glide.git", .path_git_tmp)
   # 0.11.0 release
@@ -356,3 +307,27 @@ local({
     fs::path(.path_lib_tmp, "css", "glide.theme.css.map")
   )
 })
+
+local({
+  .path_git_tmp <- fs::file_temp(pattern = "git")
+  .path_lib_tmp <- fs::path(path_vendor, "glide")
+  gert::git_clone("git@github.com:markedjs/marked.git", .path_git_tmp)
+  # 0.11.0 release
+  gert::git_reset_hard(
+    ref = "e8246208bc9dffcf550d5d3744746c6809ad2bdf",
+    repo = I(.path_git_tmp)
+  )
+  processx::run("npm", "prune", wd = .path_git_tmp)
+  processx::run("npm", "install", wd = .path_git_tmp)
+  processx::run("npm", c("run", "build"), wd = .path_git_tmp)
+  fs::dir_create(fs::path(.path_lib_tmp, "js"))
+  fs::file_copy(
+    fs::path(.path_git_tmp, "LICENSE"),
+    fs::path(.path_lib_tmp, "LICENSE")
+  )
+  fs::file_copy(
+    fs::path(.path_git_tmp, "node_modules", "marked", "marked.min.js"),
+    fs::path(.path_lib_tmp, "js", "marked.min.js")
+  )
+})
+

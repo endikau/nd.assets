@@ -1,6 +1,6 @@
 /*!
  * headroom.js v0.11.0 - Give your page some headroom. Hide your header until you need it
- * Copyright (c) 2025 Nick Williams - http://wicky.nillia.ms/headroom.js
+ * Copyright (c) 2026 Nick Williams - http://wicky.nillia.ms/headroom.js
  * License: MIT
  */
 
