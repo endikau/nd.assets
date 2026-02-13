@@ -57,14 +57,14 @@ local({
   .path_git_tmp <- fs::file_temp(pattern = "git")
   .path_lib_tmp <- fs::path(path_vendor, "twemoji")
   gert::git_clone("git@github.com:jdecked/twemoji.git", .path_git_tmp)
-  # version 15.1.0
+  # Publish v17.0.2
   gert::git_reset_hard(
-    ref = "7407fa31c51be5ab45626b8ab5554d50cc8073f6",
+    ref = "388f518b756404152f128a3539f5e7f9a6f1ebd6",
     repo = I(.path_git_tmp)
   )
-  # processx::run("npm", c("prune"), wd = .path_git_tmp)
-  # processx::run("npm", "install", wd = .path_git_tmp)
-  # processx::run("npm", c("run", "build"), wd = .path_git_tmp)
+  processx::run("npm", "prune", wd = .path_git_tmp)
+  processx::run("npm", "install", wd = .path_git_tmp)
+  processx::run("npm", c("run", "build"), wd = .path_git_tmp)
   fs::dir_create(fs::path(.path_lib_tmp, c("js")))
   fs::file_copy(
     fs::path(.path_git_tmp, "LICENSE"),
@@ -79,7 +79,7 @@ local({
     .path_lib_tmp
   )
 })
-
+# 
 local({
   .path_git_tmp <- fs::file_temp(pattern = "git")
   .path_lib_tmp <- fs::path(path_vendor, "jquery")
@@ -110,9 +110,9 @@ local({
     "git@github.com:davidjbradshaw/iframe-resizer.git",
     .path_git_tmp
   )
-  # version 5.3.1
+  # version 5.5.9
   gert::git_reset_hard(
-    ref = "251d7421476d439f7542e117e937a93374b56c39",
+    ref = "239e89c0bb6e073358f1a5da8a82ecc5e5b774b6",
     repo = I(.path_git_tmp)
   )
   processx::run("npm", "prune", wd = .path_git_tmp)
@@ -132,9 +132,9 @@ local({
   .path_git_tmp <- fs::file_temp(pattern = "git")
   .path_lib_tmp <- fs::path(path_vendor, "bootstrap")
   gert::git_clone("git@github.com:twbs/bootstrap.git", .path_git_tmp)
-  # 5.3.3 release
+  # 5.3.8 release
   gert::git_reset_hard(
-    ref = "6e1f75f420f68e1d52733b8e407fc7c3766c9dba",
+    ref = "25aa8cc0b32f0d1a54be575347e6d84b70b1acd7",
     repo = I(.path_git_tmp)
   )
   fs::dir_create(fs::path(.path_lib_tmp, c("js", "scss")))
@@ -243,30 +243,30 @@ local({
   )
 })
 
-local({
-  .path_git_tmp <- fs::file_temp(pattern = "git")
-  .path_lib_tmp <- fs::path(path_vendor, "glider")
-  gert::git_clone("git@github.com:NickPiscitelli/Glider.js.git", .path_git_tmp)
-  # 0.11.0 release
-  gert::git_reset_hard(
-    ref = "1358051cce3b9ae63c55aecb97d97c4fd56796f1",
-    repo = I(.path_git_tmp)
-  )
-  fs::dir_create(fs::path(.path_lib_tmp, "js"))
-  fs::dir_create(fs::path(.path_lib_tmp, "css"))
-  fs::file_copy(
-    fs::path(.path_git_tmp, "LICENSE.txt"),
-    fs::path(.path_lib_tmp, "LICENSE")
-  )
-  fs::file_copy(
-    fs::path(.path_git_tmp, "glider.js"),
-    fs::path(.path_lib_tmp, "js", "glider.js")
-  )
-  fs::file_copy(
-    fs::path(.path_git_tmp, "glider.css"),
-    fs::path(.path_lib_tmp, "css", "glider.css")
-  )
-})
+# local({
+#   .path_git_tmp <- fs::file_temp(pattern = "git")
+#   .path_lib_tmp <- fs::path(path_vendor, "glider")
+#   gert::git_clone("git@github.com:NickPiscitelli/Glider.js.git", .path_git_tmp)
+#   # 0.11.0 release
+#   gert::git_reset_hard(
+#     ref = "1358051cce3b9ae63c55aecb97d97c4fd56796f1",
+#     repo = I(.path_git_tmp)
+#   )
+#   fs::dir_create(fs::path(.path_lib_tmp, "js"))
+#   fs::dir_create(fs::path(.path_lib_tmp, "css"))
+#   fs::file_copy(
+#     fs::path(.path_git_tmp, "LICENSE.txt"),
+#     fs::path(.path_lib_tmp, "LICENSE")
+#   )
+#   fs::file_copy(
+#     fs::path(.path_git_tmp, "glider.js"),
+#     fs::path(.path_lib_tmp, "js", "glider.js")
+#   )
+#   fs::file_copy(
+#     fs::path(.path_git_tmp, "glider.css"),
+#     fs::path(.path_lib_tmp, "css", "glider.css")
+#   )
+# })
 
 local({
   .path_git_tmp <- fs::file_temp(pattern = "git")
@@ -310,7 +310,7 @@ local({
 
 local({
   .path_git_tmp <- fs::file_temp(pattern = "git")
-  .path_lib_tmp <- fs::path(path_vendor, "glide")
+  .path_lib_tmp <- fs::path(path_vendor, "marked")
   gert::git_clone("git@github.com:markedjs/marked.git", .path_git_tmp)
   # 0.11.0 release
   gert::git_reset_hard(
@@ -322,7 +322,7 @@ local({
   processx::run("npm", c("run", "build"), wd = .path_git_tmp)
   fs::dir_create(fs::path(.path_lib_tmp, "js"))
   fs::file_copy(
-    fs::path(.path_git_tmp, "LICENSE"),
+    fs::path(.path_git_tmp, "LICENSE.md"),
     fs::path(.path_lib_tmp, "LICENSE")
   )
   fs::file_copy(
