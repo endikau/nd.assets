@@ -36,3 +36,39 @@ $error: #e88471;
     color: var(--bs-primary);
   }
 }
+
+/* Masonry cards: pre-allocate image height so layout doesn't overlap before images load */
+.row[data-masonry] .card-image {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+}
+
+.row[data-masonry] .nd-card-image {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* CSS masonry (no JS) */
+.nd-masonry {
+  column-count: 1;
+  column-gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .nd-masonry {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nd-masonry {
+    column-count: 3;
+  }
+}
+
+.nd-masonry .masonry-item {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
