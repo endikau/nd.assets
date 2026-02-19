@@ -1,0 +1,57 @@
+// Assumes you have already imported Bootstrap SCSS (or at least its functions/variables/mixins)
+// so these are available:
+// - $grid-columns
+// - $grid-breakpoints
+// - @include media-breakpoint-up($name)
+
+.masonry {
+  // Fallback first
+  display: grid;
+
+  // Grid Level 3 "grid lanes" masonry model (ignored if unsupported)
+  display: grid-lanes;
+
+  // Bootstrap-ish 12 track default, overridable via CSS custom props
+  grid-template-columns: repeat(var(--m-tracks, #{$grid-columns}), minmax(0, 1fr));
+
+  gap: var(--m-gap, var(--bs-gutter-x, 1rem));
+
+  &.m-dense {
+    grid-auto-flow: dense;
+  }
+}
+
+// Optional container utilities
+@each $n in (12, 10, 8, 6, 4) {
+  .m-tracks-#{$n} { --m-tracks: #{$n}; }
+}
+
+// Optional gap utilities that align with Bootstrap's spacer scale
+// (Skip if you prefer just using Bootstrap's .gap-* utilities.)
+@each $key, $val in $spacers {
+  .m-gap-#{$key} { --m-gap: #{$val}; }
+}
+
+// ------------------------------------------------------------
+// Column-span utilities: .m-col-4, .m-col-md-6, etc.
+// ------------------------------------------------------------
+@each $bp, $min in $grid-breakpoints {
+  $infix: breakpoint-infix($bp, $grid-breakpoints);
+
+  @include media-breakpoint-up($bp) {
+    .m-col#{$infix}-auto {
+      grid-column: auto;
+    }
+
+    @for $i from 1 through $grid-columns {
+      .m-col#{$infix}-#{$i} {
+        grid-column: span #{$i};
+      }
+    }
+
+    // Full-span helper (useful for hero tiles)
+    .m-col#{$infix}-full {
+      grid-column: 1 / -1;
+    }
+  }
+}
