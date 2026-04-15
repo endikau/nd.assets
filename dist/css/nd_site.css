@@ -13109,6 +13109,27 @@ img.emoji {
   margin-left: 2em;
 }
 
+.popover {
+  max-width: calc(min(520px, 90vw));
+}
+
+.nd-popover .popover-body {
+  max-height: calc(min(60vh, 520px));
+  overflow: auto;
+}
+
+.nd-popover .popover-header {
+  background-color: #e9ebe5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+.nd-popover .ap-close {
+  flex: 0 0 auto;
+}
+
 .nd-glide .glide__controls .glide__arrow {
   position: relative;
 }
