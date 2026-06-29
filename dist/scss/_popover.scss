@@ -20,3 +20,25 @@
         flex: 0 0 auto;
     }
 }
+
+// Auf Touch-Geräten (grober Zeiger) die Trefferfläche des Auslösers auf
+// mindestens 44x44px vergrössern (WCAG 2.5.5), ohne das sichtbare Icon zu
+// verändern oder den Textfluss zu sprengen. Die unsichtbare ::after-Fläche
+// überlagert das Icon und nimmt die Taps für den umschliessenden <a> entgegen.
+@media (pointer: coarse) {
+    a[data-bs-toggle="popover"] {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            min-width: 44px;
+            min-height: 44px;
+        }
+    }
+}

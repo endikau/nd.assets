@@ -13130,6 +13130,23 @@ img.emoji {
   flex: 0 0 auto;
 }
 
+@media (pointer: coarse) {
+  a[data-bs-toggle="popover"] {
+    position: relative;
+  }
+  a[data-bs-toggle="popover"]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
 .nd-glide .glide__controls .glide__arrow {
   position: relative;
 }
