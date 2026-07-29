@@ -1,11 +1,3 @@
-.body {
-  background-color: #e9ebe5;
-}
-
-.main {
-  background-color: var(--bs-body-color);
-}
-
 @for $i from 1 through 6 {
   h#{$i} {
     font-weight: 700;
@@ -13,35 +5,6 @@
     color: var(--nd-navbar-bg);
   }
 }
-
-// .content-sec{
-
-//   margin-bottom: 1rem;
-//   p {
-//     padding: 0;
-//     margin-top: 0;
-//     margin-left: 0 ;
-//     margin-right: 0.5em ;
-//     margin-bottom: 0;
-//     text-align: justify;
-//     &:not(:first-of-type) {
-//       text-indent: 1.5em;
-//     }
-//   }
-//   word-break:break-word;
-//   -webkit-hyphens: auto;
-//   -moz-hyphens: auto;
-//   -ms-hyphens: auto;
-//   -o-hyphens: auto;
-//   hyphens: auto;
-
-//   // MOVE
-//   @for $i from 1 through 6 { h#{$i} {
-//     color: var(--endikau-blue);
-//   } }
-
-
-// }
 
 .hyphenated {
   word-break:break-word;
@@ -52,46 +15,68 @@
   hyphens: auto;
 }
 
-
 code {
   font-size: 1em;
 }
 
-// a {
-//   hyphens: none;
-//   overflow-wrap: break-word;
-//   word-break: break-word;
-// }
-
-// a {
-//   // display: inline-block;         /* Ensures wrapping behavior */
-//   hyphens: none;
-//   overflow-wrap: break-word;
-//   word-break: break-word;
-//   white-space: normal;           /* Allow wrapping */
-// }
+// ---------------------------------------------------------------------------
+// Article flow
+//
+// Vertical spacing is owned by the margin-top of the *following* element and
+// never by the margin-bottom of the preceding one. That way the gap above a
+// heading is identical whether it follows a paragraph, a list, an image or an
+// embedded widget — previously it was whatever the predecessor happened to
+// contribute (1.5rem after <p>, 1rem after <ul>, 0 after a <div>).
+//
+// Because these are margins rather than padding they collapse, so a Bootstrap
+// .mb-*/.my-* utility on a wrapper adds to the gap instead of stacking on it.
+//
+// Only *direct* children take part in the flow. Paragraphs inside cards,
+// accordions or carousels keep their component's own spacing.
+// ---------------------------------------------------------------------------
 
 .nd-article {
 
-  p {
-    padding: 0;
-    margin: 0;
-    text-align: justify;
-    text-justify: auto;
-    &:not(:empty) + p {
-      text-indent: 1.5em;
-    }
-  }
-
   @extend .hyphenated;
 
-  // MOVE
-  @for $i from 1 through 6 { h#{$i} {
-    color: var(--endikau-blue);
-  } }
+  // Typography applies to every descendant; spacing (below) does not.
+  p {
+    text-align: justify;
+    text-justify: auto;
+  }
 
-  p:not(:has(+ p, + ul, )) {
-    padding-bottom: 1.5rem;
+  // Embeds are block-level, so they don't pick up the descender of the line
+  // box they would otherwise sit in.
+  > iframe { display: block; }
+
+  // The rules below are ordered least- to most-specific *by intent*; several
+  // have equal specificity, so a later rule deliberately wins over an earlier
+  // one. Keep the order.
+  > * { margin-bottom: 0; }
+  > * + * { margin-top: $nd-article-flow-space; }
+
+  // Figures, embeds and tables get a little more air than running text.
+  $nd-article-blocks: div, figure, img, iframe, table, pre, blockquote;
+  > * + :is(#{$nd-article-blocks}) { margin-top: $nd-article-block-space; }
+  > :is(#{$nd-article-blocks}) + * { margin-top: $nd-article-block-space; }
+
+  // Headings own the space above them — this is the rule the old stylesheet
+  // was missing. It comes after the block rules so that e.g. a figure
+  // followed by an h2 still gets the full heading gap.
+  > * + :is(h1, h2) { margin-top: $nd-article-space-h2; }
+  > * + :is(h3) { margin-top: $nd-article-space-h3; }
+  > * + :is(h4, h5, h6) { margin-top: $nd-article-space-h4; }
+
+  // Keep a heading bound to the content directly below it. Comes last so that
+  // a heading followed by a heading or a figure stays tight.
+  > :is(h1, h2, h3, h4, h5, h6) + * { margin-top: $nd-article-heading-tail; }
+
+  > p { padding: 0; }
+
+  // Paragraph runs are separated by an indent, not by a gap.
+  > p + p {
+    margin-top: 0;
+    text-indent: $nd-article-indent;
   }
 
 }
