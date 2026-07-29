@@ -14,6 +14,9 @@ $nd-article-space-h4: 1.5rem !default;    // above h4/h5/h6
 $nd-article-heading-tail: 0.5rem !default; // below any heading
 $nd-article-indent: 1.5em !default;       // paragraph-run indent
 
+// Farbe des Popover-Auslösers (reines Info-Icon im Fliesstext, siehe _popover.scss)
+$nd-popover-trigger-color: #cf597e !default;
+
 :root {
 	--nd-navbar-color: #{$nd-navbar-color};
 	--nd-navbar-bg: #{$nd-navbar-bg};

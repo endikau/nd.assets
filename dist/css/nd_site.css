@@ -13116,6 +13116,34 @@ img.emoji {
   max-width: calc(min(520px, 90vw));
 }
 
+a[data-bs-toggle="popover"] {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  color: #cf597e;
+}
+
+a[data-bs-toggle="popover"] i, a[data-bs-toggle="popover"] .svg-inline--fa {
+  font-size: 1em;
+  color: inherit;
+}
+
+a[data-bs-toggle="popover"]:hover, a[data-bs-toggle="popover"]:focus {
+  color: #a64765;
+}
+
+a[data-bs-toggle="popover"]:focus-visible {
+  outline: 2px solid #cf597e;
+  outline-offset: 2px;
+  border-radius: .125rem;
+}
+
 .nd-popover .popover-body {
   max-height: calc(min(60vh, 520px));
   overflow: auto;

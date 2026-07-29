@@ -2,6 +2,38 @@
     max-width: calc(min(520px, 90vw));
 }
 
+// Auslöser: kein Button, sondern nur das Font-Awesome-Info-Icon. Es erbt die
+// Schriftgrösse des umgebenden Texts (FA setzt height: 1em auf das SVG) und
+// bekommt die Akzentfarbe.
+a[data-bs-toggle="popover"] {
+    display: inline;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    color: $nd-popover-trigger-color;
+
+    // Sowohl das <i> vor als auch das <svg> nach dem FA-JS-Ersatz.
+    i, .svg-inline--fa {
+        font-size: 1em;
+        color: inherit;
+    }
+
+    &:hover, &:focus {
+        color: shade-color($nd-popover-trigger-color, 20%);
+    }
+
+    &:focus-visible {
+        outline: 2px solid $nd-popover-trigger-color;
+        outline-offset: 2px;
+        border-radius: .125rem;
+    }
+}
+
 .nd-popover {
     .popover-body {
         max-height: calc(min(60vh, 520px));
