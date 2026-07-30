@@ -12838,47 +12838,60 @@ code {
   text-justify: auto;
 }
 
-.nd-article > iframe {
+.nd-article:not(.grid) > iframe {
   display: block;
 }
 
-.nd-article > * {
+.nd-article:not(.grid) > * {
   margin-bottom: 0;
 }
 
-.nd-article > * + * {
+.nd-article:not(.grid) > * + * {
+  margin-top: 1.5rem;
+}
+
+.nd-article:not(.grid) > :is(p, ul, ol, dl) + :is(p, ul, ol, dl) {
   margin-top: 1rem;
 }
 
-.nd-article > * + :is(div, figure, img, iframe, table, pre, blockquote) {
-  margin-top: 1.5rem;
+.nd-article:not(.grid) > * + :is(h1, h2) {
+  margin-top: 3.5rem;
 }
 
-.nd-article > :is(div, figure, img, iframe, table, pre, blockquote) + * {
-  margin-top: 1.5rem;
+.nd-article:not(.grid) > * + :is(h3) {
+  margin-top: 3rem;
 }
 
-.nd-article > * + :is(h1, h2) {
+.nd-article:not(.grid) > * + :is(h4, h5, h6) {
   margin-top: 2.5rem;
 }
 
-.nd-article > * + :is(h3) {
+.nd-article:not(.grid) > :is(p, ul, ol, dl) + :is(h1, h2) {
+  margin-top: 2.5rem;
+}
+
+.nd-article:not(.grid) > :is(p, ul, ol, dl) + :is(h3) {
   margin-top: 2rem;
 }
 
-.nd-article > * + :is(h4, h5, h6) {
+.nd-article:not(.grid) > :is(p, ul, ol, dl) + :is(h4, h5, h6) {
   margin-top: 1.5rem;
 }
 
-.nd-article > :is(h1, h2, h3, h4, h5, h6) + * {
+.nd-article:not(.grid) > :is(h1, h2, h3, h4, h5, h6) + * {
+  margin-top: 1rem;
+}
+
+.nd-article:not(.grid) > :is(h1, h2, h3, h4, h5, h6) + :is(p, ul, ol, dl),
+.nd-article:not(.grid) > :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {
   margin-top: 0.5rem;
 }
 
-.nd-article > p {
+.nd-article:not(.grid) > p {
   padding: 0;
 }
 
-.nd-article > p + p {
+.nd-article:not(.grid) > p + p {
   margin-top: 0;
   text-indent: 1.5em;
 }
@@ -13082,6 +13095,10 @@ img.emoji {
 
 .card {
   --bs-card-border-color: #cdcfca !important;
+}
+
+p:has(+ .stretched-link:last-child) {
+  margin-bottom: 0;
 }
 
 .nd-card-image {

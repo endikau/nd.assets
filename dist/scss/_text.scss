@@ -28,12 +28,23 @@ code {
 // embedded widget — previously it was whatever the predecessor happened to
 // contribute (1.5rem after <p>, 1rem after <ul>, 0 after a <div>).
 //
+// The defaults below assume a *block-level* neighbour and text-level pairs are
+// then tightened, rather than the other way round. That is deliberate: R
+// chunks and carousels emit display:none <script>/<style> siblings into the
+// flow, and a sibling combinator cannot see past them. Since those hidden
+// elements only ever sit next to a block, treating "unknown neighbour" as
+// block-level gives the right answer for them; the reverse default left a
+// figure at the end of a section pressed up against the next heading.
+//
 // Because these are margins rather than padding they collapse, so a Bootstrap
 // .mb-*/.my-* utility on a wrapper adds to the gap instead of stacking on it.
 //
 // Only *direct* children take part in the flow. Paragraphs inside cards,
 // accordions or carousels keep their component's own spacing.
 // ---------------------------------------------------------------------------
+
+$nd-article-text: p, ul, ol, dl;
+$nd-article-headings: h1, h2, h3, h4, h5, h6;
 
 .nd-article {
 
@@ -45,35 +56,46 @@ code {
     text-justify: auto;
   }
 
+}
+
+// `.grid` lays its children out itself (the home page hero even asks for
+// row-gap-0); the article body is a grid *item*, never a grid container.
+.nd-article:not(.grid) {
+
   // Embeds are block-level, so they don't pick up the descender of the line
   // box they would otherwise sit in.
   > iframe { display: block; }
 
-  // The rules below are ordered least- to most-specific *by intent*; several
-  // have equal specificity, so a later rule deliberately wins over an earlier
-  // one. Keep the order.
   > * { margin-bottom: 0; }
-  > * + * { margin-top: $nd-article-flow-space; }
 
-  // Figures, embeds and tables get a little more air than running text.
-  $nd-article-blocks: div, figure, img, iframe, table, pre, blockquote;
-  > * + :is(#{$nd-article-blocks}) { margin-top: $nd-article-block-space; }
-  > :is(#{$nd-article-blocks}) + * { margin-top: $nd-article-block-space; }
+  // Default: a block-level neighbour. Running text is tightened after it.
+  > * + * { margin-top: $nd-article-block-space; }
+  > :is(#{$nd-article-text}) + :is(#{$nd-article-text}) {
+    margin-top: $nd-article-flow-space;
+  }
 
-  // Headings own the space above them — this is the rule the old stylesheet
-  // was missing. It comes after the block rules so that e.g. a figure
-  // followed by an h2 still gets the full heading gap.
-  > * + :is(h1, h2) { margin-top: $nd-article-space-h2; }
-  > * + :is(h3) { margin-top: $nd-article-space-h3; }
-  > * + :is(h4, h5, h6) { margin-top: $nd-article-space-h4; }
+  // Space above a heading — the rule the old stylesheet was missing entirely.
+  // A figure or embed ends on a hard edge, where a line of text trails off
+  // into its own leading, so it needs the larger of the two values.
+  > * + :is(h1, h2) { margin-top: $nd-article-space-h2 + $nd-article-block-lead; }
+  > * + :is(h3) { margin-top: $nd-article-space-h3 + $nd-article-block-lead; }
+  > * + :is(h4, h5, h6) { margin-top: $nd-article-space-h4 + $nd-article-block-lead; }
 
-  // Keep a heading bound to the content directly below it. Comes last so that
-  // a heading followed by a heading or a figure stays tight.
-  > :is(h1, h2, h3, h4, h5, h6) + * { margin-top: $nd-article-heading-tail; }
+  > :is(#{$nd-article-text}) + :is(h1, h2) { margin-top: $nd-article-space-h2; }
+  > :is(#{$nd-article-text}) + :is(h3) { margin-top: $nd-article-space-h3; }
+  > :is(#{$nd-article-text}) + :is(h4, h5, h6) { margin-top: $nd-article-space-h4; }
+
+  // Keep a heading bound to the content directly below it.
+  > :is(#{$nd-article-headings}) + * { margin-top: $nd-article-heading-tail-block; }
+  > :is(#{$nd-article-headings}) + :is(#{$nd-article-text}),
+  > :is(#{$nd-article-headings}) + :is(#{$nd-article-headings}) {
+    margin-top: $nd-article-heading-tail;
+  }
 
   > p { padding: 0; }
 
-  // Paragraph runs are separated by an indent, not by a gap.
+  // Paragraph runs are separated by an indent, not by a gap. Last, so it wins
+  // over the text-to-text rule above.
   > p + p {
     margin-top: 0;
     text-indent: $nd-article-indent;
