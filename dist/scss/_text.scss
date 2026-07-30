@@ -92,6 +92,16 @@ $nd-article-headings: h1, h2, h3, h4, h5, h6;
     margin-top: $nd-article-heading-tail;
   }
 
+  // Nothing precedes the first *rendered* element, so it takes no space above
+  // it. R chunks can emit a display:none <style>/<script> ahead of the real
+  // first element, which the sibling combinator counts but the reader cannot
+  // see — without this, such a page opens with a heading pushed 3.5rem down.
+  > :first-child,
+  > :is(script, style):first-child + *,
+  > :is(script, style):first-child + :is(script, style) + * {
+    margin-top: 0;
+  }
+
   > p { padding: 0; }
 
   // Paragraph runs are separated by an indent, not by a gap. Last, so it wins

@@ -8,14 +8,14 @@ $nd-gutter-x: 3rem;
 // the same no matter what kind of element precedes it.
 $nd-article-flow-space: 1rem !default;    // between two text-level blocks
 $nd-article-block-space: 1.5rem !default; // around figures/embeds/tables
-$nd-article-space-h2: 2.5rem !default;    // above h1/h2
-$nd-article-space-h3: 2rem !default;      // above h3
-$nd-article-space-h4: 1.5rem !default;    // above h4/h5/h6
+$nd-article-space-h2: 2rem !default;      // above h1/h2
+$nd-article-space-h3: 1.625rem !default;  // above h3
+$nd-article-space-h4: 1.25rem !default;   // above h4/h5/h6
 $nd-article-heading-tail: 0.5rem !default; // below a heading, before text
 // A figure or embed ends on a hard edge and carries none of the optical
 // leading a line of text has, so it needs more room next to a heading than
 // running text does — on both sides.
-$nd-article-block-lead: 1rem !default;      // added above a heading after one
+$nd-article-block-lead: 0.875rem !default;  // added above a heading after one
 $nd-article-heading-tail-block: 1rem !default; // below a heading, before one
 $nd-article-indent: 1.5em !default;       // paragraph-run indent
 

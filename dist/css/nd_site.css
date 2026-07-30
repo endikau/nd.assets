@@ -12855,27 +12855,27 @@ code {
 }
 
 .nd-article:not(.grid) > * + :is(h1, h2) {
-  margin-top: 3.5rem;
+  margin-top: 2.875rem;
 }
 
 .nd-article:not(.grid) > * + :is(h3) {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 .nd-article:not(.grid) > * + :is(h4, h5, h6) {
-  margin-top: 2.5rem;
+  margin-top: 2.125rem;
 }
 
 .nd-article:not(.grid) > :is(p, ul, ol, dl) + :is(h1, h2) {
-  margin-top: 2.5rem;
-}
-
-.nd-article:not(.grid) > :is(p, ul, ol, dl) + :is(h3) {
   margin-top: 2rem;
 }
 
+.nd-article:not(.grid) > :is(p, ul, ol, dl) + :is(h3) {
+  margin-top: 1.625rem;
+}
+
 .nd-article:not(.grid) > :is(p, ul, ol, dl) + :is(h4, h5, h6) {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 .nd-article:not(.grid) > :is(h1, h2, h3, h4, h5, h6) + * {
@@ -12885,6 +12885,12 @@ code {
 .nd-article:not(.grid) > :is(h1, h2, h3, h4, h5, h6) + :is(p, ul, ol, dl),
 .nd-article:not(.grid) > :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {
   margin-top: 0.5rem;
+}
+
+.nd-article:not(.grid) > :first-child,
+.nd-article:not(.grid) > :is(script, style):first-child + *,
+.nd-article:not(.grid) > :is(script, style):first-child + :is(script, style) + * {
+  margin-top: 0;
 }
 
 .nd-article:not(.grid) > p {
