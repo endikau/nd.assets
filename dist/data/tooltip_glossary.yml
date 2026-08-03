@@ -1,0 +1,113 @@
+# Zentrale Kurzdefinitionen für Info-Tooltips.
+#
+# Genutzt von:
+#   - nd.site  → Shortcode {{< term key="…" >}} (Hugo mountet dieses Verzeichnis
+#                nach `data/`, Zugriff über hugo.Data.tooltip_glossary)
+#   - nd.apps  → nd.util::nd_term("…") liest die Datei aus
+#                node_modules/@endikau/nd_assets/dist/data/
+#
+# Felder je Eintrag:
+#   title  Pflicht. Kopfzeile des Popovers und aria-label des Auslösers.
+#   body   Pflicht. Markdown, ein bis vier kurze Absätze, keine Überschriften.
+#   href   Optional. Ziel für „Mehr dazu“ am Ende des Popovers.
+#
+# Regeln siehe CLAUDE.md im Projektordner. Ein unbekannter Schlüssel bricht den
+# Hugo-Build ab — Tippfehler fallen also beim Bauen auf, nicht erst im Browser.
+
+token:
+  title: "Token"
+  body: |
+    Ein Token ist die kleinste Einheit, in die ein Text zerlegt wird — meist ein
+    Wort, je nach Verfahren aber auch ein Satz oder ein Wortbestandteil.
+
+    „Wort“ trifft es nicht genau: Auch Satzzeichen, Zahlen und Emojis sind
+    Tokens, und ein Sprachmodell zerlegt lange Komposita in mehrere Stücke.
+  href: "/methods/preprocessing"
+
+tokenisierung:
+  title: "Tokenisierung"
+  body: |
+    Der Schritt, der einen Text in seine kleinsten Einheiten zerlegt. Aus
+    „Die Tokenisierung zerlegt Sätze.“ werden so fünf einzelne Tokens.
+
+    Für deutsche Texte ist das anspruchsvoller als für englische, weil
+    zusammengesetzte Wörter und Flexionsformen häufiger sind.
+  href: "/methods/preprocessing"
+
+korpus:
+  title: "Korpus"
+  body: |
+    Die Sammlung aller Dokumente, die gemeinsam ausgewertet werden — etwa alle
+    Rezensionen zu einem Produkt oder alle Support-Tickets eines Jahres.
+
+    Viele Kennzahlen sind nur im Verhältnis zum Korpus definiert: Wie
+    aussagekräftig ein Wort ist, hängt davon ab, wie selten es in allen übrigen
+    Dokumenten vorkommt.
+
+tf-idf:
+  title: "TF-IDF"
+  body: |
+    TF-IDF zählt nicht nur, wie **oft ein Wort in einem Text vorkommt**
+    (TF = Term Frequency), sondern prüft auch, wie **selten es im gesamten
+    Korpus ist** (IDF = Inverse Document Frequency).
+
+    Alltägliche Wörter wie „ist“ oder „und“ erscheinen in vielen Dokumenten und
+    erhalten deshalb eine niedrige Gewichtung. Fachbegriffe, die nur in wenigen
+    Dokumenten auftauchen, werden dagegen stärker gewichtet.
+
+    So zeigt TF-IDF, welche Begriffe für einen Text besonders aussagekräftig
+    sind — und nicht bloß, welche am häufigsten vorkommen.
+
+embedding:
+  title: "Embedding"
+  body: |
+    Ein Embedding (deutsch: Worteinbettung) stellt ein Wort oder einen ganzen
+    Text als Zahlenvektor dar. Die Lage im Raum bildet die Bedeutung ab:
+    Ähnliches steht nah beieinander.
+
+    Dadurch werden Bedeutungsbeziehungen rechenbar. Im klassischen Beispiel
+    ergibt „König“ minus „Mann“ plus „Frau“ einen Vektor nahe bei „Königin“.
+
+bert:
+  title: "BERT"
+  body: |
+    Ein vortrainiertes Sprachmodell, das den gesamten Satz betrachtet, um die
+    Bedeutung eines Wortes im Zusammenhang zu erfassen — anders als frühere
+    Verfahren, bei denen jedes Wort einen festen Vektor bekommt.
+
+    **Beispiel:** „Bank“ erhält in „Ich sitze auf der Bank“ eine andere
+    Repräsentation als in „Die Bank hat heute geschlossen“.
+
+    Möglich wird das durch die Transformer-Architektur, bei der alle Wörter
+    eines Satzes gleichzeitig betrachtet und ihre Beziehungen zueinander
+    gewichtet werden.
+
+fine-tuning:
+  title: "Fine-Tuning"
+  body: |
+    Ein bereits trainiertes Modell wird mit vergleichsweise wenigen eigenen
+    Beispielen nachtrainiert, um es an eine bestimmte Aufgabe oder Fachsprache
+    anzupassen.
+
+    Das ist deutlich günstiger als ein Training von Grund auf, setzt aber
+    beschriftete Beispieldaten voraus.
+
+unueberwachtes-lernen:
+  title: "Unüberwachtes Lernen"
+  body: |
+    Ein Verfahren, das Strukturen in Daten findet, ohne dass jemand vorher
+    Beispiele beschriftet hat. Die Themenmodellierung arbeitet so: Sie
+    bekommt keine Themenliste vorgegeben, sondern leitet sie aus den Texten ab.
+
+    Der Preis dafür: Was ein gefundenes Thema inhaltlich bedeutet, muss am Ende
+    ein Mensch interpretieren.
+
+llm:
+  title: "Large Language Model (LLM)"
+  body: |
+    Ein sehr großes Sprachmodell, das auf umfangreichen Textmengen trainiert
+    wurde und Anweisungen in natürlicher Sprache befolgt.
+
+    Gegenüber klassischen Verfahren erfasst es Kontext, Ironie und
+    Mehrdeutigkeit besser. Dafür ist es rechenintensiver, und dieselbe Eingabe
+    kann bei zwei Durchläufen unterschiedliche Antworten liefern.
