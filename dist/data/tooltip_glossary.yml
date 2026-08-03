@@ -1,10 +1,14 @@
 # Zentrale Kurzdefinitionen für Info-Tooltips.
 #
 # Genutzt von:
-#   - nd.site  → Shortcode {{< term key="…" >}} (Hugo mountet dieses Verzeichnis
-#                nach `data/`, Zugriff über hugo.Data.tooltip_glossary)
-#   - nd.apps  → nd.util::nd_term("…") liest die Datei aus
+#   - nd.site  → Shortcode {{< popover_load key="…" >}} (Hugo mountet dieses
+#                Verzeichnis nach `data/`, Zugriff über
+#                hugo.Data.tooltip_glossary)
+#   - nd.apps  → nd.util::nd_popover_load("…") liest die Datei aus
 #                node_modules/@endikau/nd_assets/dist/data/
+#
+# Beide sind das Gegenstück zu popover / nd_popover(), die ihren Inhalt inline
+# mitbringen — hier wird er stattdessen aus dieser Datei geladen.
 #
 # Felder je Eintrag:
 #   title  Pflicht. Kopfzeile des Popovers und aria-label des Auslösers.
